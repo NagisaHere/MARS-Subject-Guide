@@ -11,6 +11,11 @@ all: latex clean
 latex: main.tex
 	$(CC) main.tex
 
+# ensures make clean works on linux and windows
 clean: $(WASTE_FILES)
+ifeq ($(OS),Windows_NT) 
+	del $(WASTE_FILES)
+else 
 	rm $(WASTE_FILES)
+endif 
 
